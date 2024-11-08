@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wine Quality Prediction</h1>
+        <form action="/predict" method="POST">
+            <input type="text" name="fixed_acidity" placeholder="Fixed Acidity" required>
+            <input type="text" name="volatile_acidity" placeholder="Volatile Acidity" required>
+            <input type="text" name="citric_acid" placeholder="Citric Acid" required>
+            <input type="text" name="residual_sugar" placeholder="Residual Sugar" required>
+            <input type="text" name="chlorides" placeholder="Chlorides" required>
+            <input type="text" name="free_sulfur_dioxide" placeholder="Free Sulfur Dioxide" required>
+            <input type="text" name="total_sulfur_dioxide" placeholder="Total Sulfur Dioxide" required>
+            <input type="text" name="density" placeholder="Density" required>
+            <input type="text" name="pH" placeholder="pH" required>
+            <input type="text" name="sulphates" placeholder="Sulphates" required>
+            <input type="text" name="alcohol" placeholder="Alcohol" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        { % if prediction_text % }
+            <div class="result">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+        { % endif % }
+    </div>
+</body>
+</html>
